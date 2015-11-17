@@ -7,9 +7,10 @@ module.exports = {
     getData: function (req, res, next) {
 
         var options = {
+            uri: 'http://www.xmlsoccer.com/FootballData.asmx/GetAllLeagues?ApiKey=ZDWHYYRPDCFXURDLPDTOFOAQCALBHWCPUYKXIKZJSHNVDKCKUK',
             // uri: 'http://pokeapi.co/api/v1/pokemon/1/',
             // uri: 'https://www.kimonolabs.com/api/atzhegky?apikey=Gw5PcHFe2RGyDfn2GJlUBynbruB41WWo',
-            uri: 'http://www.xmlsoccer.com/FootballData.asmx/GetLeagueStandingsBySeason?' + config.secretKey + '&league=54&seasonDateString=1516',
+            //uri: 'http://www.xmlsoccer.com/FootballData.asmx/GetLeagueStandingsBySeason?' + config.secretKey + '&league=54&seasonDateString=1516',
             // qs: {
             //     access_token: 'xxxxx xxxxx' // -> uri + '?access_token=xxxxx%20xxxxx' 
             // },
@@ -29,6 +30,7 @@ module.exports = {
                     console.dir(result);
                     console.log(result);
                     dataObj = result;
+                    console.log('here!');
                 });
                 res.status(200).json(dataObj);
             })
