@@ -12,6 +12,7 @@ module.exports = {
             //     access_token: 'xxxxx xxxxx' // -> uri + '?access_token=xxxxx%20xxxxx' 
             // },
             headers: {
+                'Access-Control-Allow-Origin': '*',
                 'User-Agent': 'Request-Promise'
             },
             json: true // Automatically parses the JSON string in the response 
