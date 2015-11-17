@@ -11,6 +11,10 @@ var app = express();
 app.use(bodyParser.json());
 
 app.use(cors());
+app.use(function(req, res, next) {
+    res.header({'Access-Control-Allow-Origin': '*'});
+    next();
+});
 
 app.get('/data', MainCtrl.getData);
 
