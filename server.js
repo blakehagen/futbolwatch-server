@@ -14,12 +14,11 @@ app.use(cors());
 
 app.use(express.static('./client'));
 
-process.env.NODE_ENV = process.env.NODE_ENV || 'development';
-var port = process.env.PORT || 3000;
-
 
 app.get('/data', MainCtrl.getData);
 
+
+var port = process.env.PORT || 3000;
 
 app.listen(port, function () {
     console.log('Listening on port ' + port);
