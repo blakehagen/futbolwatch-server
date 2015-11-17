@@ -22,14 +22,14 @@ module.exports = {
 
             .then(function (data) {
                 var dataObj;
-                Convert XML to JSON-like Object
+                // Convert XML to JSON-like Object
                 var xml = data
                 parseString(xml, function (err, result) {
                     console.dir(result);
                     console.log(result);
                     dataObj = result;
                 });
-                res.status(200).json(data);
+                res.status(200).json(dataObj);
             })
             .catch(function (err) {
                 console.log('API call failed');   // API call failed... 
