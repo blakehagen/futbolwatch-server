@@ -7,8 +7,8 @@ module.exports = {
     getData: function (req, res, next) {
 
         var options = {
-            uri: 'http://pokeapi.co/api/v1/pokemon/1/',
-            // uri: 'http://www.xmlsoccer.com/FootballData.asmx/GetLeagueStandingsBySeason?' + config.secretKey + '&league=50&seasonDateString=1516',
+            // uri: 'http://pokeapi.co/api/v1/pokemon/1/',
+            uri: 'http://www.xmlsoccer.com/FootballData.asmx/GetLeagueStandingsBySeason?ApiKey=ZDWHYYRPDCFXURDLPDTOFOAQCALBHWCPUYKXIKZJSHNVDKCKUK' + /*config.secretKey*/ + '&league=50&seasonDateString=1516',
             // qs: {
             //     access_token: 'xxxxx xxxxx' // -> uri + '?access_token=xxxxx%20xxxxx' 
             // },
@@ -28,7 +28,7 @@ module.exports = {
                     // console.log(result);
                     dataObj = result;
                 });
-                res.status(200).json(data);
+                res.status(200).json(dataObj);
             })
             .catch(function (err) {
                 console.log('API call failed');   // API call failed... 
