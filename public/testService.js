@@ -4,7 +4,7 @@ angular.module('serverApp').service('testService', function($http, $q){
         var deferred = $q.defer();
         $http({
             method: "GET",
-            url: "./data"
+            url: "/data"
         }).then(function(response){
             deferred.resolve(response)
         })
