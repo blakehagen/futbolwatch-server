@@ -12,6 +12,9 @@ app.use(bodyParser.json());
 
 app.use(cors());
 
+app.use(express.static('./client'));
+
+
 var port = process.env.PORT || 3000;
 
 
