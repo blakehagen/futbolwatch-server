@@ -8,7 +8,7 @@ module.exports = {
 
         var options = {
             // uri: 'http://pokeapi.co/api/v1/pokemon/1/',
-            uri: 'http://www.xmlsoccer.com/FootballData.asmx/GetLeagueStandingsBySeason?ApiKey=ZDWHYYRPDCFXURDLPDTOFOAQCALBHWCPUYKXIKZJSHNVDKCKUK' + /*config.secretKey*/ + '&league=50&seasonDateString=1516',
+            uri: 'http://www.xmlsoccer.com/FootballData.asmx/GetLeagueStandingsBySeason?ApiKey=ZDWHYYRPDCFXURDLPDTOFOAQCALBHWCPUYKXIKZJSHNVDKCKUK' + /*config.secretKey*/ + '&league=54&seasonDateString=1516',
             // qs: {
             //     access_token: 'xxxxx xxxxx' // -> uri + '?access_token=xxxxx%20xxxxx' 
             // },
@@ -25,7 +25,7 @@ module.exports = {
                 var xml = data
                 parseString(xml, function (err, result) {
                     // console.dir(result);
-                    // console.log(result);
+                    console.log(result);
                     dataObj = result;
                 });
                 res.status(200).json(dataObj);
