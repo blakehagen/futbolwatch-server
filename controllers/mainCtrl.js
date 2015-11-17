@@ -1,6 +1,6 @@
 var rp = require('request-promise');
-var parseString = require('xml2js').parseString;
-var config = require('../config');
+// var parseString = require('xml2js').parseString;
+// var config = require('../config');
 
 module.exports = {
 
