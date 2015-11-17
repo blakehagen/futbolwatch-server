@@ -19,7 +19,6 @@ module.exports = {
         };
 
         rp(options)
-
             .then(function (data) {
                 var dataObj;
                 // Convert XML to JSON-like Object
