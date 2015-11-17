@@ -18,6 +18,10 @@
   },
   "homepage": "https://github.com/blakehagen/server-test-project",
   "dependencies": {
-    "request-promise": "^1.0.2"
+    "body-parser": "^1.14.1",
+    "cors": "^2.7.1",
+    "express": "^4.13.3",
+    "request-promise": "^1.0.2",
+    "xml2js": "^0.4.15"
   }
 }
