@@ -8,12 +8,8 @@ module.exports = {
 
         var options = {
             // uri: 'http://www.xmlsoccer.com/FootballData.asmx/GetAllLeagues?ApiKey=ZDWHYYRPDCFXURDLPDTOFOAQCALBHWCPUYKXIKZJSHNVDKCKUK',
-            // uri: 'http://pokeapi.co/api/v1/pokemon/1/',
             // uri: 'https://www.kimonolabs.com/api/atzhegky?apikey=Gw5PcHFe2RGyDfn2GJlUBynbruB41WWo',
             //uri: 'http://www.xmlsoccer.com/FootballData.asmx/GetLeagueStandingsBySeason?' + config.secretKey + '&league=54&seasonDateString=1516',
-            // qs: {
-            //     access_token: 'xxxxx xxxxx' // -> uri + '?access_token=xxxxx%20xxxxx' 
-            // },
             headers: {
                 'User-Agent': 'Request-Promise'
             },
@@ -36,6 +32,24 @@ module.exports = {
             })
             .catch(function (err) {
                 console.log('API call failed');   // API call failed... 
+            });
+    },
+
+
+
+
+    getResults: function (req, res, next) {
+        var options = {
+            uri: 'http://api.football-data.org/alpha/soccerseasons/' + req.body.leagueId + '/fixtures/?timeFrame=p120',
+            headers: { 'X-Auth-Token': '57d24f023e8247aea4badd00e37328dc' },
+            json: true // Automatically parses the JSON string in the response 
+        };
+        rp(options).then(function (data) {
+            console.log('data on mainCtrl in SERVER: ' + data)
+            res.status(200).json(data)
+        })
+            .catch(function (err) {
+                console.log('GET Request Failed!');
             });
     }
 

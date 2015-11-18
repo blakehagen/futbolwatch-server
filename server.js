@@ -19,6 +19,8 @@ app.get('/test', function(req, res, next){
     res.status(200).send('Server is good to go!')
 });
 
+app.get('/results', MainCtrl.getResults);
+
 var port = process.env.PORT || 3000;
 
 app.listen(port, function () {
