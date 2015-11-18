@@ -4,15 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Test Server</title>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body ng-controller="homeCtrl">
-    <h1>Server Test</h1>
-    <h3>{{test}}</h3>
-    
-    
-    <button ng-click="data()">Test Me</button>
-    <h6>{{message}}</h6>
+    <div class="main">
+        <h1>Server Test</h1>
+        <p></p>
+        <button ng-click="data()">Test Me</button>
+        <p>
+            <h5>Status:&nbsp;&nbsp;{{status}} &nbsp;&nbsp;//&nbsp;&nbsp; {{message}}</h5>
+        </p>
+    </div>
 
 
 
