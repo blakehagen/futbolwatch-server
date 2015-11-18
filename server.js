@@ -20,6 +20,7 @@ app.get('/test', function(req, res, next){
 });
 
 app.get('/results', MainCtrl.getResults);
+app.get('/fixtures', MainCtrl.getFixtures);
 
 var port = process.env.PORT || 3000;
 

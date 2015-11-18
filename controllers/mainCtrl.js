@@ -49,6 +49,19 @@ module.exports = {
             res.status(200).json(data)
         })
             .catch(function (err) {
+            });
+    },
+    
+        getFixtures: function (req, res, next) {
+        var options = {
+            uri: 'http://api.football-data.org/alpha/soccerseasons/' + '398' + '/fixtures/?timeFrame=n30',
+            headers: { 'X-Auth-Token': '57d24f023e8247aea4badd00e37328dc' },
+            json: true // Automatically parses the JSON string in the response 
+        };
+        rp(options).then(function (data) {
+            res.status(200).json(data)
+        })
+            .catch(function (err) {
                 console.log('GET Request Failed!');
             });
     }
