@@ -5,6 +5,7 @@ angular.module('serverApp').controller('homeCtrl', function($scope, testService)
     $scope.data = function(){
         testService.getData().then(function(response){
             $scope.test = response
+            console.log(response);
         })
     };
     
