@@ -15,7 +15,9 @@ app.use(cors());
 app.use(express.static(__dirname + '/public'));
 
 
-app.get('/data', MainCtrl.getData);
+app.get('/test', function(req, res, next){
+    res.status(200).send('Server is good to go!')
+});
 
 var port = process.env.PORT || 3000;
 

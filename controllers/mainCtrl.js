@@ -1,13 +1,13 @@
 var rp = require('request-promise');
 var parseString = require('xml2js').parseString;
-// var config = require('../config');
+// var config = require('./config');
 
 module.exports = {
 
-    getData: function (req, res, next) {
+    getDataTest: function (req, res, next) {
 
         var options = {
-            uri: 'http://www.xmlsoccer.com/FootballData.asmx/GetAllLeagues?ApiKey=ZDWHYYRPDCFXURDLPDTOFOAQCALBHWCPUYKXIKZJSHNVDKCKUK',
+            // uri: 'http://www.xmlsoccer.com/FootballData.asmx/GetAllLeagues?ApiKey=ZDWHYYRPDCFXURDLPDTOFOAQCALBHWCPUYKXIKZJSHNVDKCKUK',
             // uri: 'http://pokeapi.co/api/v1/pokemon/1/',
             // uri: 'https://www.kimonolabs.com/api/atzhegky?apikey=Gw5PcHFe2RGyDfn2GJlUBynbruB41WWo',
             //uri: 'http://www.xmlsoccer.com/FootballData.asmx/GetLeagueStandingsBySeason?' + config.secretKey + '&league=54&seasonDateString=1516',
