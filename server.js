@@ -17,7 +17,6 @@ var corsOptions = {
 
 app.use(express.static(__dirname + '/public'));
 
-
 app.get('/test', function(req, res, next){
     res.status(200).send('Server is good to go!')
 });
