@@ -10,7 +10,7 @@ var app = express();
 
 app.use(bodyParser.json());
 
-// app.use(cors());
+app.use(cors());
 var corsOptions = {
   origin: 'https://blakehagen.github.io'
 };
@@ -22,8 +22,8 @@ app.get('/test', function(req, res, next){
     res.status(200).send('Server is good to go!')
 });
 
-app.get('/results', cors(corsOptions), MainCtrl.getResults);
-app.get('/fixtures', cors(corsOptions), MainCtrl.getFixtures);
+app.get('/results', /*cors(corsOptions)*/ MainCtrl.getResults);
+app.get('/fixtures', /*cors(corsOptions)*/ MainCtrl.getFixtures);
 
 var port = process.env.PORT || 3000;
 
