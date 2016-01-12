@@ -33,6 +33,7 @@ module.exports = {
     },
 
     getTopScorers: function (req, res, next) {
+        console.log(req.params.id);
         var league = req.params.id;
         var options = {
             uri: 'https://www.kimonolabs.com/api/' + league + '?apikey=Gw5PcHFe2RGyDfn2GJlUBynbruB41WWo',
