@@ -30,5 +30,33 @@ module.exports = {
             .catch(function (err) {
                 console.log('GET Request Failed!');
             });
+    },
+
+    getTopScorers: function (req, res, next) {
+        var league = req.query.league;
+        var options = {
+            uri: 'https://www.kimonolabs.com/api/' + league + '?apikey=Gw5PcHFe2RGyDfn2GJlUBynbruB41WWo',
+            json: true // Automatically parses the JSON string in the response 
+        };
+        rp(options).then(function (data) {
+            res.status(200).json(data)
+        })
+            .catch(function (err) {
+                console.log('GET Request Failed!');
+            });
+    },
+
+    getLeagueTable: function (req, res, next) {
+        var league = req.query.league;
+        var options = {
+            uri: 'https://www.kimonolabs.com/api/' + league + '?apikey=Gw5PcHFe2RGyDfn2GJlUBynbruB41WWo',
+            json: true // Automatically parses the JSON string in the response 
+        };
+        rp(options).then(function (data) {
+            res.status(200).json(data)
+        })
+            .catch(function (err) {
+                console.log('GET Request Failed!');
+            });
     }
 };

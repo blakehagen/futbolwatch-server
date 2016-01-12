@@ -2,7 +2,6 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var rp = require('request-promise');
 var cors = require('cors');
-var parseString = require('xml2js');
 
 var MainCtrl = require('./controllers/mainCtrl');
 
@@ -12,7 +11,7 @@ app.use(bodyParser.json());
 
 app.use(cors());
 var corsOptions = {
-  origin: 'https://blakehagen.github.io'
+  origin: 'http://futbolwatch.com'
 };
 
 app.use(express.static(__dirname + '/public'));
@@ -23,6 +22,8 @@ app.get('/test', function(req, res, next){
 
 app.get('/results', /*cors(corsOptions)*/ MainCtrl.getResults);
 app.get('/fixtures', /*cors(corsOptions)*/ MainCtrl.getFixtures);
+app.get('/topscorers', /*cors(corsOptions)*/ MainCtrl.getTopScorers);
+app.get('/leaguetable', /*cors(corsOptions)*/ MainCtrl.getLeagueTable);
 
 var port = process.env.PORT || 3000;
 
