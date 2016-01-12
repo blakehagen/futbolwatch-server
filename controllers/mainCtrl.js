@@ -32,32 +32,32 @@ module.exports = {
             });
     },
 
-    getTopScorers: function (req, res, next) {
-        console.log(req.params.id);
-        var league = req.params.id;
-        var options = {
-            uri: 'https://www.kimonolabs.com/api/' + league + '?apikey=Gw5PcHFe2RGyDfn2GJlUBynbruB41WWo',
-            json: true // Automatically parses the JSON string in the response 
-        };
-        rp(options).then(function (data) {
-            res.status(200).json(data)
-        })
-            .catch(function (err) {
-                console.log('GET Request Failed!');
-            });
-    },
+    // getTopScorers: function (req, res, next) {
+    //     console.log(req.params.id);
+    //     var league = req.params.id;
+    //     var options = {
+    //         uri: 'https://www.kimonolabs.com/api/' + league + '?apikey=Gw5PcHFe2RGyDfn2GJlUBynbruB41WWo',
+    //         json: true // Automatically parses the JSON string in the response 
+    //     };
+    //     rp(options).then(function (data) {
+    //         res.status(200).json(data)
+    //     })
+    //         .catch(function (err) {
+    //             console.log('GET Request Failed!');
+    //         });
+    // },
 
-    getLeagueTable: function (req, res, next) {
-        var league = req.params.id;
-        var options = {
-            uri: 'https://www.kimonolabs.com/api/' + league + '?apikey=Gw5PcHFe2RGyDfn2GJlUBynbruB41WWo',
-            json: true // Automatically parses the JSON string in the response 
-        };
-        rp(options).then(function (data) {
-            res.status(200).json(data)
-        })
-            .catch(function (err) {
-                console.log('GET Request Failed!');
-            });
-    }
+    // getLeagueTable: function (req, res, next) {
+    //     var league = req.params.id;
+    //     var options = {
+    //         uri: 'https://www.kimonolabs.com/api/' + league + '?apikey=Gw5PcHFe2RGyDfn2GJlUBynbruB41WWo',
+    //         json: true // Automatically parses the JSON string in the response 
+    //     };
+    //     rp(options).then(function (data) {
+    //         res.status(200).json(data)
+    //     })
+    //         .catch(function (err) {
+    //             console.log('GET Request Failed!');
+    //         });
+    // }
 };

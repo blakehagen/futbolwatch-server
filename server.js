@@ -10,9 +10,9 @@ var app = express();
 app.use(bodyParser.json());
 
 app.use(cors());
-var corsOptions = {
-  origin: 'http://futbolwatch.com'
-};
+// var corsOptions = {
+//   origin: 'http://futbolwatch.com'
+// };
 
 app.use(express.static(__dirname + '/public'));
 
@@ -22,11 +22,12 @@ app.get('/test', function(req, res, next){
 
 app.get('/results', /*cors(corsOptions)*/ MainCtrl.getResults);
 app.get('/fixtures', /*cors(corsOptions)*/ MainCtrl.getFixtures);
-app.get('/topscorers/:id', cors(corsOptions), MainCtrl.getTopScorers);
-app.get('/leaguetable/:id', cors(corsOptions), MainCtrl.getLeagueTable);
+// app.get('/topscorers/:id', cors(corsOptions), MainCtrl.getTopScorers);
+// app.get('/leaguetable/:id', cors(corsOptions), MainCtrl.getLeagueTable);
 
 var port = process.env.PORT || 3000;
 
 app.listen(port, function () {
     console.log('Listening on port ' + port);
 });
+
