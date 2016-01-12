@@ -33,7 +33,7 @@ module.exports = {
     },
 
     getTopScorers: function (req, res, next) {
-        var league = req.query.league;
+        var league = req.params.id;
         var options = {
             uri: 'https://www.kimonolabs.com/api/' + league + '?apikey=Gw5PcHFe2RGyDfn2GJlUBynbruB41WWo',
             json: true // Automatically parses the JSON string in the response 
@@ -47,7 +47,7 @@ module.exports = {
     },
 
     getLeagueTable: function (req, res, next) {
-        var league = req.query.league;
+        var league = req.params.id;
         var options = {
             uri: 'https://www.kimonolabs.com/api/' + league + '?apikey=Gw5PcHFe2RGyDfn2GJlUBynbruB41WWo',
             json: true // Automatically parses the JSON string in the response 

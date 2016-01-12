@@ -22,8 +22,8 @@ app.get('/test', function(req, res, next){
 
 app.get('/results', /*cors(corsOptions)*/ MainCtrl.getResults);
 app.get('/fixtures', /*cors(corsOptions)*/ MainCtrl.getFixtures);
-app.get('/topscorers', /*cors(corsOptions)*/ MainCtrl.getTopScorers);
-app.get('/leaguetable', /*cors(corsOptions)*/ MainCtrl.getLeagueTable);
+app.get('/topscorers/:id', /*cors(corsOptions)*/ MainCtrl.getTopScorers);
+app.get('/leaguetable/:id', /*cors(corsOptions)*/ MainCtrl.getLeagueTable);
 
 var port = process.env.PORT || 3000;
 
