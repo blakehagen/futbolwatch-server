@@ -23,6 +23,5 @@ app.use(express.static(__dirname + '/public'));
 let port = process.env.PORT || 3000;
 
 app.listen(port, () => {
-  console.log('The party is at port ' + port);
+  console.log('The party is on at port ' + port);
 });
-
