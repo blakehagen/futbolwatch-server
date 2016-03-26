@@ -1,33 +1,41 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var rp = require('request-promise');
-var cors = require('cors');
+'use strict';
 
-var MainCtrl = require('./controllers/mainCtrl');
+// REQUIRES //
+let babel      = require('babel-core');
+let express    = require('express');
+let bodyParser = require('body-parser');
+let rp         = require('request-promise');
+let cors       = require('cors');
 
-var app = express();
+let MainCtrl = require('./controllers/mainCtrl');
 
-app.use(bodyParser.json());
+// EXPRESS //
+let app = express();
 
 app.use(cors());
-// var corsOptions = {
-//   origin: 'http://futbolwatch.com'
-// };
+let corsOptions = {
+  origin: 'https://blakehagen.github.io'
+};
 
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+
+// CONNECT TO FRONT //
 app.use(express.static(__dirname + '/public'));
 
-app.get('/test', function(req, res, next){
-    res.status(200).send('Server is good to go!')
+
+// ROUTES //
+app.get('/test', (req, res, next) => {
+  res.status(200).send('Server is good to go!')
 });
 
-app.get('/results', /*cors(corsOptions)*/ MainCtrl.getResults);
-app.get('/fixtures', /*cors(corsOptions)*/ MainCtrl.getFixtures);
-// app.get('/topscorers/:id', cors(corsOptions), MainCtrl.getTopScorers);
-// app.get('/leaguetable/:id', cors(corsOptions), MainCtrl.getLeagueTable);
+app.get('/results', cors(corsOptions), MainCtrl.getResults);
+app.get('/fixtures', cors(corsOptions), MainCtrl.getFixtures);
 
-var port = process.env.PORT || 3000;
+// PORT //
+let port = process.env.PORT || 3000;
 
-app.listen(port, function () {
-    console.log('Listening on port ' + port);
+app.listen(port, () => {
+  console.log('The party is starting on port ' + port);
 });
 
