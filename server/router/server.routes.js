@@ -3,8 +3,7 @@
 let resultsCtrl   = require('../features/match-results/server.results.controller');
 let fixturesCtrl  = require('../features/upcoming-fixtures/server.fixtures.controller');
 let standingsCtrl = require('../features/league-standings/server.standings.controller');
-
-// let scorersCtrl   = require('../features/top-scorers/server.scorers.controller');
+let scorersCtrl   = require('../features/top-scorers/server.scorers.controller');
 
 
 module.exports = (app) => {
@@ -23,5 +22,8 @@ module.exports = (app) => {
 
   app.route('/standings/:league')
     .get(standingsCtrl.getLeagueStandings); // GET LEAGUE STANDINGS
+
+  app.route('/scorers/:league')
+    .get(scorersCtrl.getTopScorers); // GET TOP SCORERS
 
 };
