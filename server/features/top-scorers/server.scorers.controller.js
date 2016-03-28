@@ -25,7 +25,7 @@ module.exports = {
     } else if (leagueCode === '4j8yjehk') {
       leagueUrl = 'http://www.fifa.com/world-match-centre/nationalleagues/nationalleague=france-ligue-1-2000000018/top-scorers/index.html';
     } else if (leagueCode === 'dirj8dru') {
-      leagueUrl = 'http://www.fifa.com/world-match-centre/nationalleagues/nationalleague=france-ligue-1-2000000018/top-scorers/index.html';
+      leagueUrl = 'http://www.fifa.com/world-match-centre/uefachampionsleague/top-scorers/index.html';
     }
 
     // ARRAYS FOR DATA //
