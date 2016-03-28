@@ -81,7 +81,7 @@ module.exports = {
         $('.gt').filter(function () {
           let data = $(this);
           g        = data.text();
-          goals.push(mp);
+          goals.push(g);
         });
 
         // FIND NUMBER OF PENALTIES SCORED //
