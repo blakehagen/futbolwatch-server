@@ -85,10 +85,10 @@ module.exports = {
           })
         });
 
-        for (let i = 0; i < rankings.length; i++) {
-          results.forEach(e => {
-            e['rank'] = rankings[i];
-            rankings.splice(i, 1);
+        for (let i = 1; i < names.length; i++) {
+          results.forEach((e, idx) => {
+            e['rank'] = idx + 1;
+            // rankings.splice(i, 1);
           })
         }
 
@@ -113,12 +113,6 @@ module.exports = {
           })
         }
 
-        // for (let i = 0; i < penalties.length; i++) {
-        //   results.forEach(e => {
-        //     e['penalties'] = penalties[i];
-        //     penalties.splice(i, 1);
-        //   })
-        // }
         // console.log(results);
         res.status(200).json(results);
       })
