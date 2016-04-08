@@ -15,7 +15,7 @@ module.exports = {
     rp(options).then((data) => {
         res.status(200).json(data)
       })
-      .catch(function (err) {
+      .catch((err) => {
       });
   }
 };
