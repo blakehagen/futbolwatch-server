@@ -11,28 +11,27 @@ module.exports = {
     // SET URL TO GET DATA FROM //
     let leagueUrl;
     if (leagueCode === 'ce15ltey') {
-      leagueUrl = 'http://www.fifa.com/world-match-centre/nationalleagues/nationalleague=england-premier-league-2000000000/top-scorers/index.html';
+      leagueUrl = 'http://www.bbc.com/sport/football/premier-league/top-scorers';
     } else if (leagueCode === 'daaqk8d0') {
-      leagueUrl = 'http://www.fifa.com/world-match-centre/nationalleagues/nationalleague=spain-liga-2000000037/top-scorers/index.html';
+      leagueUrl = 'http://www.bbc.com/sport/football/spanish-la-liga/top-scorers';
     } else if (leagueCode === '3vb8ywkg') {
-      leagueUrl = 'http://www.fifa.com/world-match-centre/nationalleagues/nationalleague=germany-bundesliga-2000000019/top-scorers/index.html';
+      leagueUrl = 'http://www.bbc.com/sport/football/german-bundesliga/top-scorers';
     } else if (leagueCode === 'a71bgaeg') {
-      leagueUrl = 'http://www.fifa.com/world-match-centre/nationalleagues/nationalleague=netherlands-eredivisie-2000000022/top-scorers/index.html';
+      leagueUrl = 'http://www.bbc.com/sport/football/dutch-eredivisie/top-scorers';
     } else if (leagueCode === 'dp2cqh4g') {
-      leagueUrl = 'http://www.fifa.com/world-match-centre/nationalleagues/nationalleague=italy-serie-a-2000000026/top-scorers/index.html';
+      leagueUrl = 'http://www.bbc.com/sport/football/italian-serie-a/top-scorers';
     } else if (leagueCode === 'adx5ccsw') {
-      leagueUrl = 'http://www.fifa.com/world-match-centre/nationalleagues/nationalleague=portugal-liga-2000000033/top-scorers/index.html';
+      leagueUrl = 'http://www.bbc.com/sport/football/portuguese-primeira-liga/top-scorers';
     } else if (leagueCode === '4j8yjehk') {
-      leagueUrl = 'http://www.fifa.com/world-match-centre/nationalleagues/nationalleague=france-ligue-1-2000000018/top-scorers/index.html';
+      leagueUrl = 'http://www.bbc.com/sport/football/french-ligue-one/top-scorers';
     } else if (leagueCode === 'dirj8dru') {
-      leagueUrl = 'http://www.fifa.com/world-match-centre/uefachampionsleague/top-scorers/index.html';
+      leagueUrl = 'http://www.bbc.com/sport/football/champions-league/top-scorers';
     }
 
     // ARRAYS FOR DATA //
     let teams         = [];
     let rankings      = [];
     let goals         = [];
-    let penalties     = [];
     let matchesPlayed = [];
     let names         = [];
 
@@ -47,57 +46,36 @@ module.exports = {
     rp(options)
       .then(($) => {
 
-        let name, team, rank, g, p, mp;
+        let name, team, rank, g;
 
         // FIND PLAYER NAME //
-        $('.player').filter(function () {
+        $('.top-player-stats__name').filter(function () {
           let data = $(this);
           name     = data.text();
           names.push(name);
         });
 
         // FIND TEAM //
-        $('.team').filter(function () {
+        $('.team-short-name').filter(function () {
           let data = $(this);
           team     = data.text();
           teams.push(team);
         });
 
-        // FIND RANK //
-        $('.rnk').filter(function () {
-          let data = $(this);
-          rank     = data.text();
-          rankings.push(rank);
-        });
-
-        // FIND NUMBER OF GAMES PLAYED //
-        $('.mp').filter(function () {
-          let data = $(this);
-          mp       = data.text();
-          matchesPlayed.push(mp);
-        });
-
         // FIND NUMBER OF GOALS SCORED //
-        $('.gt').filter(function () {
+        $('.top-player-stats__goals-scored-number').filter(function () {
           let data = $(this);
           g        = data.text();
           goals.push(g);
         });
 
-        // FIND NUMBER OF PENALTIES SCORED //
-        $('.pen').filter(function () {
-          let data = $(this);
-          p        = data.text();
-          penalties.push(p);
-        });
-
         // REMOVE 1ST ITEM FROM ARRAYS AND MERGE DATA INTO AN ARRAY OF OBJECTS//
-        rankings.splice(0, 1);
-        matchesPlayed.splice(0, 1);
-        goals.splice(0, 1);
-        penalties.splice(0, 1);
-        teams.splice(0, 1);
-        names.splice(0, 1);
+        // rankings.splice(0, 1);
+        // matchesPlayed.splice(0, 1);
+        // goals.splice(0, 1);
+        // // penalties.splice(0, 1);
+        // teams.splice(0, 1);
+        // names.splice(0, 1);
 
         let results = [];
 
@@ -135,13 +113,13 @@ module.exports = {
           })
         }
 
-        for (let i = 0; i < penalties.length; i++) {
-          results.forEach(e => {
-            e['penalties'] = penalties[i];
-            penalties.splice(i, 1);
-          })
-        }
-        
+        // for (let i = 0; i < penalties.length; i++) {
+        //   results.forEach(e => {
+        //     e['penalties'] = penalties[i];
+        //     penalties.splice(i, 1);
+        //   })
+        // }
+        // console.log(results);
         res.status(200).json(results);
       })
       .catch(err => {
