@@ -11,19 +11,19 @@ module.exports = {
 
     // SET URL TO GET DATA FROM //
     let leagueUrl;
-    if (leagueCode === '398') {
+    if (leagueCode === '426') {
       leagueUrl = 'http://www.bbc.com/sport/football/premier-league/table';
-    } else if (leagueCode === '399') {
+    } else if (leagueCode === '436') {
       leagueUrl = 'http://www.bbc.com/sport/football/spanish-la-liga/table';
-    } else if (leagueCode === '394') {
+    } else if (leagueCode === '430') {
       leagueUrl = 'http://www.bbc.com/sport/football/german-bundesliga/table';
-    } else if (leagueCode === '404') {
+    } else if (leagueCode === '433') {
       leagueUrl = 'http://www.bbc.com/sport/football/dutch-eredivisie/table';
-    } else if (leagueCode === '401') {
+    } else if (leagueCode === '438') {
       leagueUrl = 'http://www.bbc.com/sport/football/italian-serie-a/table';
-    } else if (leagueCode === '402') {
+    } else if (leagueCode === '439') {
       leagueUrl = 'http://www.bbc.com/sport/football/portuguese-primeira-liga/table';
-    } else if (leagueCode === '396') {
+    } else if (leagueCode === '434') {
       leagueUrl = 'http://www.bbc.com/sport/football/french-ligue-one/table';
     } else if (leagueCode === '405') {
       res.status(200).send('No Table Available for Champions League');
