@@ -25,7 +25,7 @@ module.exports = {
       leagueUrl = 'http://www.bbc.com/sport/football/portuguese-primeira-liga/table';
     } else if (leagueCode === '434') {
       leagueUrl = 'http://www.bbc.com/sport/football/french-ligue-one/table';
-    } else if (leagueCode === '405') {
+    } else if (leagueCode === '440') {
       res.status(200).send('No Table Available for Champions League');
     }
 
