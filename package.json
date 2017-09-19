@@ -24,6 +24,7 @@
     "cheerio": "^0.20.0",
     "cors": "^2.7.1",
     "express": "^4.13.3",
+    "lodash": "^4.17.4",
     "request-promise": "^1.0.2"
   },
   "devDependencies": {
