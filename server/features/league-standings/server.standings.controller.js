@@ -1,7 +1,7 @@
 'use strict';
-
-let rp      = require('request-promise');
-let cheerio = require('cheerio');
+const _ = require('lodash');
+const rp = require('request-promise');
+const cheerio = require('cheerio');
 
 module.exports = {
 
@@ -26,7 +26,7 @@ module.exports = {
     } else if (leagueCode === '434') {
       leagueUrl = 'http://www.bbc.com/sport/football/french-ligue-one/table';
     } else if (leagueCode === '440') {
-      res.status(200).send('No Table Available for Champions League');
+      return res.status(200).send('No Table Available for Champions League');
     }
 
     // ARRAYS FOR DATA //
@@ -48,71 +48,45 @@ module.exports = {
     rp(options)
       .then(($) => {
 
-        let team, pos, w, d, l, mp, pts;
+        let cell;
+        let rawData = [];
 
-        // FIND TEAM //
-        $('.team-name').filter(function () {
+        // GET ALL DATA //
+        $('.gs-o-table__cell').filter(function () {
           let data = $(this);
-          team     = data.first().text();
-          teams.push(team);
+          cell     = data.first().text();
+          rawData.push(cell);
         });
 
-        // FIND POSITION //
-        $('.position-number').filter(function () {
-          let data = $(this);
-          pos      = data.text();
-          positions.push(pos);
+        let newData = _.chunk(rawData, 12);
+        _.forEach(newData, row => {
+          _.forEach(row, (dataPoint, index) => {
+            if (index === 0) {
+              positions.push(dataPoint);
+            } else if (index === 2) {
+              teams.push(dataPoint);
+            } else if (index === 3) {
+              matchesPlayed.push(dataPoint);
+            } else if (index === 4) {
+              wins.push(dataPoint);
+            } else if (index === 5) {
+              draws.push(dataPoint);
+            } else if (index === 6) {
+              losses.push(dataPoint);
+            } else if (index === 10) {
+              points.push(dataPoint);
+            }
+          })
         });
 
-        // FIND MATCHES PLAYED //
-        $('.played').filter(function () {
-          let data = $(this);
-          mp       = data.text();
-          matchesPlayed.push(mp);
-        });
-
-        // FIND WINS //
-        $('.won').filter(function () {
-          let data = $(this);
-          w        = data.first().text();
-          wins.push(w);
-        });
-
-        // FIND DRAWS //
-        $('.drawn').filter(function () {
-          let data = $(this);
-          d        = data.text();
-          draws.push(d);
-        });
-
-        // FIND LOSSES //
-        $('.lost').filter(function () {
-          let data = $(this);
-          l        = data.text();
-          losses.push(l);
-        });
-
-        // FIND POINTS //
-        $('.points').filter(function () {
-          let data = $(this);
-          pts      = data.text();
-          points.push(pts);
-        });
-
-        // REMOVE 1ST ITEM FROM ARRAYS AND EXTRA ITEMS AND MERGE DATA INTO ARRAY OF OBJECTS //
+        // REMOVE 1ST ITEM FROM ARRAYS //
+        positions.splice(0, 1);
         teams.splice(0, 1);
-        teams.splice(20);
-        positions.splice(20);
         matchesPlayed.splice(0, 1);
-        matchesPlayed.splice(20);
         wins.splice(0, 1);
-        wins.splice(20);
         draws.splice(0, 1);
-        draws.splice(20);
         losses.splice(0, 1);
-        losses.splice(20);
         points.splice(0, 1);
-        points.splice(20);
 
         let results = [];
 
@@ -164,13 +138,11 @@ module.exports = {
           })
         }
 
-        // console.log(results);
         res.status(200).json(results);
       })
       .catch(err => {
         console.log(err);
         res.status(500).send(err);
       })
-
   }
 };
